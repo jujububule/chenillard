@@ -24,7 +24,7 @@ begin
     process(clk_in, key(2))
     begin
         if key(2) = '0' then
-				hex0 <= "0010111";
+				hex0 <= "0000000";
 
 			elsif rising_edge(clk_in)then
             case hex0 is -- affiché 5
@@ -41,7 +41,7 @@ begin
     process(clk_in, key(2))
     begin
         if key(2) = '0' then
-				hex1 <= "0100100";
+				hex1 <= "0000000";
 
 			elsif rising_edge(clk_in)then
             case hex0 is -- Affiché 2
@@ -58,7 +58,7 @@ begin
     process(clk_in, key(2))
     begin
         if key(2) = '0' then
-				hex2 <= "1000000";
+				hex2 <= "0000000";
 
 			elsif rising_edge(clk_in)then
             case hex0 is -- Afficher 0
@@ -75,7 +75,7 @@ begin
     process(clk_in, key(2))
     begin
         if key(2) = '0' then
-				hex3 <= "0100100";
+				hex3 <= "0000000";
 
 			elsif rising_edge(clk_in)then
             case hex0 is -- Affiché 2
