@@ -1,0 +1,106 @@
+|top
+ledr[0] <= chenille:inst.aff[0]
+ledr[1] <= chenille:inst.aff[1]
+ledr[2] <= chenille:inst.aff[2]
+ledr[3] <= chenille:inst.aff[3]
+ledr[4] <= chenille:inst.aff[4]
+ledr[5] <= chenille:inst.aff[5]
+ledr[6] <= chenille:inst.aff[6]
+ledr[7] <= chenille:inst.aff[7]
+clock_50 => vitesse:inst2.clk_in
+sw[0] => vitesse:inst2.selecSpeed[0]
+sw[1] => vitesse:inst2.selecSpeed[1]
+key[2] => chenille:inst.reset
+
+
+|top|chenille:inst
+clk_in => aff[0]~reg0.CLK
+clk_in => aff[1]~reg0.CLK
+clk_in => aff[2]~reg0.CLK
+clk_in => aff[3]~reg0.CLK
+clk_in => aff[4]~reg0.CLK
+clk_in => aff[5]~reg0.CLK
+clk_in => aff[6]~reg0.CLK
+clk_in => aff[7]~reg0.CLK
+aff[0] <= aff[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+aff[1] <= aff[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+aff[2] <= aff[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+aff[3] <= aff[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+aff[4] <= aff[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+aff[5] <= aff[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+aff[6] <= aff[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+aff[7] <= aff[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+reset => aff[0]~reg0.ACLR
+reset => aff[1]~reg0.ACLR
+reset => aff[2]~reg0.ACLR
+reset => aff[3]~reg0.ACLR
+reset => aff[4]~reg0.ACLR
+reset => aff[5]~reg0.ACLR
+reset => aff[6]~reg0.ACLR
+reset => aff[7]~reg0.ACLR
+
+
+|top|vitesse:inst2
+clk_in => clk_out~reg0.CLK
+clk_in => etatCompteur[0].CLK
+clk_in => etatCompteur[1].CLK
+clk_in => etatCompteur[2].CLK
+clk_in => etatCompteur[3].CLK
+clk_in => etatCompteur[4].CLK
+clk_in => etatCompteur[5].CLK
+clk_in => etatCompteur[6].CLK
+clk_in => etatCompteur[7].CLK
+clk_in => etatCompteur[8].CLK
+clk_in => etatCompteur[9].CLK
+clk_in => etatCompteur[10].CLK
+clk_in => etatCompteur[11].CLK
+clk_in => etatCompteur[12].CLK
+clk_in => etatCompteur[13].CLK
+clk_in => etatCompteur[14].CLK
+clk_in => etatCompteur[15].CLK
+clk_in => etatCompteur[16].CLK
+clk_in => etatCompteur[17].CLK
+clk_in => etatCompteur[18].CLK
+clk_in => etatCompteur[19].CLK
+clk_in => etatCompteur[20].CLK
+clk_in => etatCompteur[21].CLK
+clk_in => etatCompteur[22].CLK
+clk_in => etatCompteur[23].CLK
+clk_in => etatCompteur[24].CLK
+clk_in => etatCompteur[25].CLK
+clk_out <= clk_out~reg0.DB_MAX_OUTPUT_PORT_TYPE
+selecSpeed[0] => Mux0.IN5
+selecSpeed[0] => Mux1.IN5
+selecSpeed[0] => Mux2.IN5
+selecSpeed[0] => Mux3.IN5
+selecSpeed[0] => Mux4.IN5
+selecSpeed[0] => Mux5.IN5
+selecSpeed[0] => Mux6.IN5
+selecSpeed[0] => Mux7.IN5
+selecSpeed[0] => Mux8.IN5
+selecSpeed[0] => Mux9.IN5
+selecSpeed[0] => Mux10.IN5
+selecSpeed[0] => Mux11.IN5
+selecSpeed[0] => Mux12.IN5
+selecSpeed[0] => Mux13.IN5
+selecSpeed[0] => Equal0.IN45
+selecSpeed[0] => Equal0.IN49
+selecSpeed[1] => Mux0.IN4
+selecSpeed[1] => Mux1.IN4
+selecSpeed[1] => Mux2.IN4
+selecSpeed[1] => Mux3.IN4
+selecSpeed[1] => Mux4.IN4
+selecSpeed[1] => Mux5.IN4
+selecSpeed[1] => Mux6.IN4
+selecSpeed[1] => Mux7.IN4
+selecSpeed[1] => Mux8.IN4
+selecSpeed[1] => Mux9.IN4
+selecSpeed[1] => Mux10.IN4
+selecSpeed[1] => Mux11.IN4
+selecSpeed[1] => Mux12.IN4
+selecSpeed[1] => Mux13.IN4
+selecSpeed[1] => Equal0.IN9
+selecSpeed[1] => Equal0.IN37
+selecSpeed[1] => Equal0.IN50
+
+
