@@ -6,12 +6,9 @@ use ieee.std_logic_arith.all;
 entity fonction_3 is
 port(
     clk_in : in std_logic;
-    hex0 : buffer std_logic_vector(6 downto 0);
-    hex1 : buffer std_logic_vector(6 downto 0);
-    hex2 : buffer std_logic_vector(6 downto 0);
     hex3 : buffer std_logic_vector(6 downto 0);
     ledr : buffer std_logic_vector(7 downto 0);
-    key : in std_logic_vector(2 downto 2)
+    key2 : in std_logic
 
 );
 end fonction_3;
@@ -19,7 +16,7 @@ end fonction_3;
 architecture chenilleDGDG of fonction_3 is
 
 begin
-    process(clk_in, key(2))
+    process(clk_in, key2)
     begin
         if key2 = '0' then
 				hex3 <= "0000000";
