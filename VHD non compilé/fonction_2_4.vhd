@@ -25,6 +25,9 @@ begin
     begin
         if key(2) = '0' then
             hex0 <= "0000000";
+            hex1 <= "0000000";
+            hex2 <= "0000000";
+            hex3 <= "0000000";
 
         elsif rising_edge(clk_in)then
             case hex0 is -- affiché 5
