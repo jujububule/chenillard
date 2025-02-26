@@ -15,7 +15,7 @@ end fonction_1_7;
 architecture chenilleDGDG of fonction_1_7 is
 
 begin
-    process(clk_in, key(2))
+    process(clk_in, key2)
     begin
         if key2 = '0' then--réinitialisation
             ledv <= "0000000";
