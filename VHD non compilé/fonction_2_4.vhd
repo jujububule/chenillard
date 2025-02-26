@@ -44,7 +44,7 @@ begin
 				hex1 <= "0000000";
 
 			elsif rising_edge(clk_in)then
-            case hex0 is -- Affiché 2
+            case hex1 is -- Affiché 2
                 when "0100100" => hex1 <= "1111111";
                 when others => hex1 <= "0100100";--permet l'initialisation
             end case;
@@ -61,7 +61,7 @@ begin
 				hex2 <= "0000000";
 
 			elsif rising_edge(clk_in)then
-            case hex0 is -- Afficher 0
+            case hex2 is -- Afficher 0
                 when "1000000" => hex2 <= "1111111";
                 when others => hex2 <= "1000000";--permet l'initialisation
             end case;
@@ -78,7 +78,7 @@ begin
 				hex3 <= "0000000";
 
 			elsif rising_edge(clk_in)then
-            case hex0 is -- Affiché 2
+            case hex3 is -- Affiché 2
                 when "0100100" => hex3 <= "1111111";
                 when others => hex3 <= "0100100";--permet l'initialisation
             end case;
