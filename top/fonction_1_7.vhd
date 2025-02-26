@@ -6,7 +6,7 @@ use ieee.std_logic_arith.all;
 entity fonction_1_7 is
 port(
     clk_in : in std_logic;
-    ledv : buffer std_logic_vector(6 downto 0);
+    ledv : buffer std_logic_vector(7 downto 0);
     key2 : in std_logic
 
 );
@@ -18,16 +18,17 @@ begin
     process(clk_in, key2)
     begin
         if key2 = '0' then--réinitialisation
-            ledv <= "0000000";
+            ledv <= "00000000";
 
         elsif rising_edge(clk_in)then
             case ledv is --permet de décalé la led allumé
-                when "0000111" => ledv <= "0001110";
-                when "0001110" => ledv <= "0011100";
-                when "0011100" => ledv <= "0111000";
-                when "0111000" => ledv <= "1110000";
-                when "1110000" => ledv <= "0000111";
-                when others => ledv <= "0000111";--permet l'initialisation
+                when "00000111" => ledv <= "00001110";
+                when "00001110" => ledv <= "00011100";
+                when "00011100" => ledv <= "00111000";
+                when "00111000" => ledv <= "01110000";
+                when "01110000" => ledv <= "11100000";
+					 when "11100000" => ledv <= "00000111";
+                when others => ledv <= "00000111";--permet l'initialisation
             end case;
         end if;
     end process;

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for top
-Wed Feb 05 16:11:20 2025
+Wed Feb 26 16:20:30 2025
 Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
 
 
@@ -10,12 +10,7 @@ Quartus II 64-Bit Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Elapsed Time Per Partition
- 10. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Messages
 
 
 
@@ -41,20 +36,20 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Feb 05 16:11:20 2025      ;
+; Analysis & Synthesis Status        ; Failed - Wed Feb 26 16:20:30 2025          ;
 ; Quartus II 64-Bit Version          ; 13.0.0 Build 156 04/24/2013 SJ Web Edition ;
 ; Revision Name                      ; top                                        ;
 ; Top-level Entity Name              ; top                                        ;
 ; Family                             ; Cyclone II                                 ;
-; Total logic elements               ; 60                                         ;
-;     Total combinational functions  ; 60                                         ;
-;     Dedicated logic registers      ; 35                                         ;
-; Total registers                    ; 35                                         ;
-; Total pins                         ; 12                                         ;
-; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 0                                          ;
-; Embedded Multiplier 9-bit elements ; 0                                          ;
-; Total PLLs                         ; 0                                          ;
+; Total logic elements               ; N/A until Partition Merge                  ;
+;     Total combinational functions  ; N/A until Partition Merge                  ;
+;     Dedicated logic registers      ; N/A until Partition Merge                  ;
+; Total registers                    ; N/A until Partition Merge                  ;
+; Total pins                         ; N/A until Partition Merge                  ;
+; Total virtual pins                 ; N/A until Partition Merge                  ;
+; Total memory bits                  ; N/A until Partition Merge                  ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                  ;
+; Total PLLs                         ; N/A until Partition Merge                  ;
 +------------------------------------+--------------------------------------------+
 
 
@@ -154,113 +149,77 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                         ;
-+----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                               ; Library ;
-+----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------------------------+---------+
-; top.bdf                          ; yes             ; User Block Diagram/Schematic File  ; //salsa.univ-amu.fr/dfs/myhome_etud/DOSSIERS_WINDOWS/Documents/Chenillard/top/top.bdf      ;         ;
-; chenille.vhd                     ; yes             ; Auto-Found VHDL File               ; //salsa.univ-amu.fr/dfs/myhome_etud/DOSSIERS_WINDOWS/Documents/Chenillard/top/chenille.vhd ;         ;
-; vitesse.vhd                      ; yes             ; Auto-Found VHDL File               ; //salsa.univ-amu.fr/dfs/myhome_etud/DOSSIERS_WINDOWS/Documents/Chenillard/top/vitesse.vhd  ;         ;
-+----------------------------------+-----------------+------------------------------------+--------------------------------------------------------------------------------------------+---------+
-
-
-+--------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary            ;
-+---------------------------------------------+----------+
-; Resource                                    ; Usage    ;
-+---------------------------------------------+----------+
-; Estimated Total logic elements              ; 60       ;
-;                                             ;          ;
-; Total combinational functions               ; 60       ;
-; Logic element usage by number of LUT inputs ;          ;
-;     -- 4 input functions                    ; 22       ;
-;     -- 3 input functions                    ; 12       ;
-;     -- <=2 input functions                  ; 26       ;
-;                                             ;          ;
-; Logic elements by mode                      ;          ;
-;     -- normal mode                          ; 35       ;
-;     -- arithmetic mode                      ; 25       ;
-;                                             ;          ;
-; Total registers                             ; 35       ;
-;     -- Dedicated logic registers            ; 35       ;
-;     -- I/O registers                        ; 0        ;
-;                                             ;          ;
-; I/O pins                                    ; 12       ;
-; Embedded Multiplier 9-bit elements          ; 0        ;
-; Maximum fan-out node                        ; clock_50 ;
-; Maximum fan-out                             ; 27       ;
-; Total fan-out                               ; 287      ;
-; Average fan-out                             ; 2.68     ;
-+---------------------------------------------+----------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |top                       ; 60 (0)            ; 35 (0)       ; 0           ; 0            ; 0       ; 0         ; 12   ; 0            ; |top                ;              ;
-;    |chenille:inst|         ; 18 (18)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|chenille:inst  ;              ;
-;    |vitesse:inst2|         ; 42 (42)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|vitesse:inst2  ;              ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 35    ;
-; Number of registers using Synchronous Clear  ; 26    ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 8     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:00     ;
-+----------------+--------------+
-
-
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.0 Build 156 04/24/2013 SJ Web Edition
-    Info: Processing started: Wed Feb 05 16:11:07 2025
+    Info: Processing started: Wed Feb 26 16:20:29 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off top -c top
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file top.bdf
     Info (12023): Found entity 1: top
-Info (12127): Elaborating entity "top" for the top level hierarchy
-Warning (12125): Using design file chenille.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
-    Info (12022): Found design unit 1: chenille-chenilleDGDG
-    Info (12023): Found entity 1: chenille
-Info (12128): Elaborating entity "chenille" for hierarchy "chenille:inst"
-Warning (12125): Using design file vitesse.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+Info (12021): Found 1 design units, including 1 entities, in source file bus_muw_8.bdf
+    Info (12023): Found entity 1: bus_muw_8
+Info (12021): Found 2 design units, including 1 entities, in source file fonction_1_1.vhd
+    Info (12022): Found design unit 1: fonction_1_1-chenilleDGDG
+    Info (12023): Found entity 1: fonction_1_1
+Info (12021): Found 2 design units, including 1 entities, in source file vitesse.vhd
     Info (12022): Found design unit 1: vitesse-compteur
     Info (12023): Found entity 1: vitesse
-Info (12128): Elaborating entity "vitesse" for hierarchy "vitesse:inst2"
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 72 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 4 input pins
-    Info (21059): Implemented 8 output pins
-    Info (21061): Implemented 60 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4656 megabytes
-    Info: Processing ended: Wed Feb 05 16:11:21 2025
-    Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:02
+Info (12021): Found 2 design units, including 1 entities, in source file fonction_2_1.vhd
+    Info (12022): Found design unit 1: fonction_2_1-chenilleDGDG
+    Info (12023): Found entity 1: fonction_2_1
+Info (12021): Found 2 design units, including 1 entities, in source file fonction_2_4.vhd
+    Info (12022): Found design unit 1: fonction_2_4-chenille
+    Info (12023): Found entity 1: fonction_2_4
+Info (12021): Found 2 design units, including 1 entities, in source file fonction_3.vhd
+    Info (12022): Found design unit 1: fonction_3-chenilleDGDG
+    Info (12023): Found entity 1: fonction_3
+Info (12021): Found 2 design units, including 1 entities, in source file fonction_1_7.vhd
+    Info (12022): Found design unit 1: fonction_1_7-chenilleDGDG
+    Info (12023): Found entity 1: fonction_1_7
+Info (12021): Found 2 design units, including 1 entities, in source file fonction_1_3.vhd
+    Info (12022): Found design unit 1: fonction_1_3-chenilleDGDG
+    Info (12023): Found entity 1: fonction_1_3
+Info (12021): Found 1 design units, including 1 entities, in source file bus_muw_7.bdf
+    Info (12023): Found entity 1: bus_muw_7
+Info (12127): Elaborating entity "top" for the top level hierarchy
+Warning (275089): Not all bits in bus "sw[9..0]" are used
+Warning (275080): Converted elements in bus name "sw" using legacy naming rules. Make any assignments on the new names, not on the original names.
+    Warning (275081): Converted element name(s) from "sw[1..0]" to "sw1..0"
+    Warning (275081): Converted element name(s) from "sw[9]" to "sw9"
+    Warning (275081): Converted element name(s) from "sw[5]" to "sw5"
+    Warning (275081): Converted element name(s) from "sw[4]" to "sw4"
+    Warning (275081): Converted element name(s) from "sw[3]" to "sw3"
+Info (12128): Elaborating entity "bus_muw_7" for hierarchy "bus_muw_7:inst20"
+Error (275051): Bus range for signal "port "datab[WIDTH-1..0]" (ID BUSMUX:inst)" must be a number
+Error (275051): Bus range for signal "port "dataa[WIDTH-1..0]" (ID BUSMUX:inst)" must be a number
+Error (275051): Bus range for signal "port "result[WIDTH-1..0]" (ID BUSMUX:inst)" must be a number
+Error (275051): Bus range for signal "port "datab[WIDTH-1..0]" (ID BUSMUX:inst1)" must be a number
+Error (275051): Bus range for signal "port "dataa[WIDTH-1..0]" (ID BUSMUX:inst1)" must be a number
+Error (275051): Bus range for signal "port "result[WIDTH-1..0]" (ID BUSMUX:inst1)" must be a number
+Error (275051): Bus range for signal "port "datab[WIDTH-1..0]" (ID BUSMUX:inst2)" must be a number
+Error (275051): Bus range for signal "port "dataa[WIDTH-1..0]" (ID BUSMUX:inst2)" must be a number
+Error (275051): Bus range for signal "port "result[WIDTH-1..0]" (ID BUSMUX:inst2)" must be a number
+Error (275051): Bus range for signal "port "datab[WIDTH-1..0]" (ID BUSMUX:inst3)" must be a number
+Error (275051): Bus range for signal "port "dataa[WIDTH-1..0]" (ID BUSMUX:inst3)" must be a number
+Error (275051): Bus range for signal "port "result[WIDTH-1..0]" (ID BUSMUX:inst3)" must be a number
+Error (275051): Bus range for signal "port "datab[WIDTH-1..0]" (ID BUSMUX:inst4)" must be a number
+Error (275051): Bus range for signal "port "dataa[WIDTH-1..0]" (ID BUSMUX:inst4)" must be a number
+Error (275051): Bus range for signal "port "result[WIDTH-1..0]" (ID BUSMUX:inst4)" must be a number
+Error (275051): Bus range for signal "port "datab[WIDTH-1..0]" (ID BUSMUX:inst5)" must be a number
+Error (275051): Bus range for signal "port "dataa[WIDTH-1..0]" (ID BUSMUX:inst5)" must be a number
+Error (275051): Bus range for signal "port "result[WIDTH-1..0]" (ID BUSMUX:inst5)" must be a number
+Error (275051): Bus range for signal "port "datab[WIDTH-1..0]" (ID BUSMUX:inst6)" must be a number
+Error (275051): Bus range for signal "port "dataa[WIDTH-1..0]" (ID BUSMUX:inst6)" must be a number
+Error (275051): Bus range for signal "port "result[WIDTH-1..0]" (ID BUSMUX:inst6)" must be a number
+Error (12152): Can't elaborate user hierarchy "bus_muw_7:inst20"
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 22 errors, 8 warnings
+    Error: Peak virtual memory: 4630 megabytes
+    Error: Processing ended: Wed Feb 26 16:20:30 2025
+    Error: Elapsed time: 00:00:01
+    Error: Total CPU time (on all processors): 00:00:01
 
 
