@@ -18,9 +18,9 @@ begin
     process(clk_in, key(2))
     begin
         if key2 = '0' then
-				hex3 <= "0000000";
+            hex3 <= "0000000";
 
-			elsif rising_edge(clk_in)then
+        elsif rising_edge(clk_in)then
             case hex3 is --permet de décalé la led allumé
                 when "1111110" => hex3 <= "1111101";
                 when "1111101" => hex3 <= "1111011";

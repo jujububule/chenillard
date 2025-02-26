@@ -10,7 +10,7 @@ port(
     hex1 : buffer std_logic_vector(6 downto 0);
     hex2 : buffer std_logic_vector(6 downto 0);
     hex3 : buffer std_logic_vector(6 downto 0);
-    key : in std_logic_vector(2 downto 2)
+    key2 : in std_logic
 
 );
 end fonction_2_4;
@@ -21,9 +21,9 @@ begin
 
 
 
-    process(clk_in, key(2))
+    process(clk_in, key2)
     begin
-        if key(2) = '0' then
+        if key2 = '0' then
             hex0 <= "0000000";
             hex1 <= "0000000";
             hex2 <= "0000000";

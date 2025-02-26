@@ -18,9 +18,9 @@ begin
     process(clk_in, key(2))
     begin
         if key2 = '0' then--réinitialisation
-				ledv <= "0000000";
+            ledv <= "0000000";
 
-			elsif rising_edge(clk_in)then
+        elsif rising_edge(clk_in)then
             case ledv is --permet de décalé la led allumé
                 when "0000111" => ledv <= "0001110";
                 when "0001110" => ledv <= "0011100";
