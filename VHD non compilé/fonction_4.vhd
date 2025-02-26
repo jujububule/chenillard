@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 use ieee.std_logic_arith.all;
 
-entity fonction4 is
+entity fonction_4 is
 port(
     clk_in : in std_logic;
     hex0 : buffer std_logic_vector(6 downto 0);
@@ -13,9 +13,9 @@ port(
     key2 : in std_logic
 
 );
-end fonction4;
+end fonction_4;
 
-architecture chenille of fonction4 is
+architecture chenille of fonction_4 is
 
 begin
 
