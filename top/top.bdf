@@ -1037,6 +1037,38 @@ applicable agreement for further details.
 		(rectangle (rect 16 16 144 64))
 	)
 )
+(symbol
+	(rect 1040 224 1072 256)
+	(text "GND" (rect 8 16 29 26)(font "Arial" (font_size 6)))
+	(text "inst23" (rect 3 21 32 33)(font "Arial" )(invisible))
+	(port
+		(pt 16 0)
+		(output)
+		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
+		(text "1" (rect 18 0 23 12)(font "Courier New" (bold))(invisible))
+		(line (pt 16 8)(pt 16 0))
+	)
+	(drawing
+		(line (pt 8 8)(pt 16 16))
+		(line (pt 16 16)(pt 24 8))
+		(line (pt 8 8)(pt 24 8))
+	)
+)
+(symbol
+	(rect 1048 448 1080 464)
+	(text "VCC" (rect 7 0 27 10)(font "Arial" (font_size 6)))
+	(text "inst24" (rect 3 5 32 17)(font "Arial" )(invisible))
+	(port
+		(pt 16 16)
+		(output)
+		(text "1" (rect 19 7 24 19)(font "Courier New" (bold))(invisible))
+		(text "1" (rect 19 7 24 19)(font "Courier New" (bold))(invisible))
+		(line (pt 16 16)(pt 16 8))
+	)
+	(drawing
+		(line (pt 8 8)(pt 24 8))
+	)
+)
 (connector
 	(pt 296 168)
 	(pt 408 168)
@@ -1057,16 +1089,6 @@ applicable agreement for further details.
 (connector
 	(pt 600 168)
 	(pt 624 168)
-)
-(connector
-	(pt 872 256)
-	(pt 1144 256)
-	(bus)
-)
-(connector
-	(pt 1144 352)
-	(pt 1016 352)
-	(bus)
 )
 (connector
 	(pt 712 656)
@@ -1140,11 +1162,6 @@ applicable agreement for further details.
 (connector
 	(pt 920 352)
 	(pt 920 272)
-	(bus)
-)
-(connector
-	(pt 920 272)
-	(pt 1144 272)
 	(bus)
 )
 (connector
@@ -1306,18 +1323,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 712 1584)
-	(pt 1144 1584)
-)
-(connector
-	(pt 1144 1600)
-	(pt 712 1600)
-)
-(connector
-	(pt 1144 1616)
-	(pt 712 1616)
-)
-(connector
 	(pt 1320 496)
 	(pt 1288 496)
 	(bus)
@@ -1347,6 +1352,79 @@ applicable agreement for further details.
 	(pt 1320 976)
 	(bus)
 )
+(connector
+	(pt 1128 1616)
+	(pt 1128 416)
+)
+(connector
+	(pt 1128 416)
+	(pt 1144 416)
+)
+(connector
+	(pt 1144 1616)
+	(pt 1128 1616)
+)
+(connector
+	(pt 1128 1616)
+	(pt 712 1616)
+)
+(connector
+	(pt 1144 400)
+	(pt 1120 400)
+)
+(connector
+	(pt 1120 400)
+	(pt 1120 1600)
+)
+(connector
+	(pt 1144 1600)
+	(pt 1120 1600)
+)
+(connector
+	(pt 1120 1600)
+	(pt 712 1600)
+)
+(connector
+	(pt 1112 1584)
+	(pt 1112 384)
+)
+(connector
+	(pt 1112 384)
+	(pt 1144 384)
+)
+(connector
+	(pt 712 1584)
+	(pt 1112 1584)
+)
+(connector
+	(pt 1112 1584)
+	(pt 1144 1584)
+)
+(connector
+	(pt 1144 256)
+	(pt 1096 256)
+	(bus)
+)
+(connector
+	(pt 1096 224)
+	(pt 1096 256)
+	(bus)
+)
+(connector
+	(pt 1096 224)
+	(pt 1056 224)
+	(bus)
+)
+(connector
+	(pt 1144 496)
+	(pt 1064 496)
+	(bus)
+)
+(connector
+	(pt 1064 496)
+	(pt 1064 464)
+	(bus)
+)
 (junction (pt 648 272))
 (junction (pt 624 256))
 (junction (pt 648 656))
@@ -1357,3 +1435,6 @@ applicable agreement for further details.
 (junction (pt 624 640))
 (junction (pt 624 352))
 (junction (pt 648 368))
+(junction (pt 1128 1616))
+(junction (pt 1120 1600))
+(junction (pt 1112 1584))

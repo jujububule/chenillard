@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP2C20F484) Path("/myhome_etud/DOSSIERS_WINDOWS/Documents/Chenillard/top/output_files/") File("top.sof") MfrSpec(OpMask(1));
+		Device PartName(EP2C20F484) Path("D:/github/chenillard/top/output_files/") File("top.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
