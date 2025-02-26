@@ -7,7 +7,8 @@ entity vitesse is
 port(
 	clk_in : in std_logic; --l'horloge de 50MHz
 	clk_out : buffer std_logic; --la sortie de la fréquence d'horloge abaissé
-	selecSpeed: in std_logic_vector(1 downto 0)
+	selecSpeed : in std_logic_vector(1 downto 0);
+	onOff : in std_logic
 );
 end vitesse;
 
@@ -31,8 +32,8 @@ begin
 	 
     process(clk_in)
     begin
-        if rising_edge(clk_in) then
-            if etatCompteur >= vitesse then etatCompteur <= conv_std_logic_vector(0,26); -- à chaque fois que le compteur est à 24999999 on le remetà 0
+        if rising_edge(clk_in) and onOff = '1' then
+            if etatCompteur = vitesse then etatCompteur <= conv_std_logic_vector(0,26); -- à chaque fois que le compteur est à 24999999 on le remetà 0
             clk_out <= not clk_out; --et on inverse le signal de sortie
             else etatCompteur <= etatCompteur+1; --sinon on le laisse évoluer normalement de 1 en 1
             end if;
