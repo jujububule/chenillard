@@ -5,7 +5,7 @@ use ieee.std_logic_arith.all;
 
 entity bus_mux_7 is
 port(
-    sortie : out std_logic_vector(6 downto 0);
+    out : out std_logic_vector(6 downto 0);
     in1 : in std_logic_vector(6 downto 0);
     in2 : in std_logic_vector(6 downto 0);
     in3 : in std_logic_vector(6 downto 0);
@@ -25,23 +25,23 @@ begin
 
     case addr is
         when "000" =>
-            sortie <= in1;
+            in1 => out;
         when "001" =>
-            sortie <= in2;
+            in2 => out;
         when "010" =>
-            sortie <= in3;
+            in3 => out;
         when "011" =>
-            sortie <= in4;
+            in4 => out;
         when "100" =>
-            sortie <= in5;
+            in5 => out;
         when "101" =>
-            sortie <= in6;
+            in6 => out;
         when "110" =>
-            sortie <= in7;
+            in7 => out;
         when "111" =>
-            sortie <= in8;
+            in8 => out;
         when others =>
-            sortie <= in1;
+            in1 => out;
 
     end case;
 
