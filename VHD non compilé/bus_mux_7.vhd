@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
 use ieee.std_logic_arith.all;
 
-entity bus_mux_8 is
+entity bus_mux_7 is
 port(
     out : out std_logic_vector(6 downto 0);
     in1 : in std_logic_vector(6 downto 0);
@@ -17,9 +17,9 @@ port(
     addr : in std_logic_vector(2 downto 0)
 
 );
-end bus_mux_8;
+end bus_mux_7;
 
-architecture chenille of bus_mux_8 is
+architecture chenille of bus_mux_7 is
 
 begin
 
