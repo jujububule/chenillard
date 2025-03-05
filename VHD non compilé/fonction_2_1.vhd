@@ -15,7 +15,7 @@ end fonction_2_1;
 architecture chenilleDGDG of fonction_2_1 is
 
 begin
-    process(clk_in, key(2))
+    process(clk_in, key2)
     begin
         if key2 = '0' then
             hex3 <= "0000000";

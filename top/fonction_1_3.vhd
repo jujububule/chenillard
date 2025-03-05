@@ -35,7 +35,7 @@ begin
             end case;
             case ledg is --permet de décalé la led allumé
                 when "10000000" => ledg <= "01000000";
-                when "01000000" => ledg <= "00100100";
+                when "01000000" => ledg <= "00100000";
                 when "00100000" => ledg <= "00010000";
                 when "00010000" => ledg <= "00001000";
                 when "00001000" => ledg <= "00000100";

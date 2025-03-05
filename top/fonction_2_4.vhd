@@ -31,13 +31,13 @@ begin
 
         elsif rising_edge(clk_in)then
             case hex0 is -- affiché 5
-                when "0010111" =>
+                when "0010010" =>
                     hex0 <= "1111111";
                     hex1 <= "1111111";
                     hex2 <= "1111111";
                     hex3 <= "1111111";
                 when others =>
-                    hex0 <= "0010111";--permet l'initialisation
+                    hex0 <= "0010010";--permet l'initialisation
                     hex1 <= "0100100";
                     hex2 <= "1000000";
                     hex3 <= "0100100";
