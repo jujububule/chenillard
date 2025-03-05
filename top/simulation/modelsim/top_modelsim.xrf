@@ -9,6 +9,7 @@ source_file = 1, D:/github/chenillard/top/fonction_3.vhd
 source_file = 1, D:/github/chenillard/top/fonction_1_7.vhd
 source_file = 1, D:/github/chenillard/top/fonction_1_3.vhd
 source_file = 1, D:/github/chenillard/top/bus_muw_7.bdf
+source_file = 1, D:/github/chenillard/top/bus_mux_7.vhd
 source_file = 1, D:/github/chenillard/top/db/top.cbx.xml
 source_file = 1, c:/altera/13.0/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
 source_file = 1, c:/altera/13.0/quartus/libraries/vhdl/ieee/prmtvs_p.vhd

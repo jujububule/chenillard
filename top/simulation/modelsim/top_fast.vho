@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 13.0.0 Build 156 04/24/2013 SJ Web Edition"
 
--- DATE "02/26/2025 16:47:15"
+-- DATE "03/05/2025 14:03:29"
 
 -- 
 -- Device: Altera EP2C20F484C7 Package FBGA484
@@ -232,11 +232,11 @@ SIGNAL \inst17|inst2|$00000|auto_generated|result_node[3]~6_combout\ : std_logic
 SIGNAL \inst17|inst2|$00000|auto_generated|result_node[2]~7_combout\ : std_logic;
 SIGNAL \inst17|inst2|$00000|auto_generated|result_node[1]~8_combout\ : std_logic;
 SIGNAL \inst17|inst2|$00000|auto_generated|result_node[0]~9_combout\ : std_logic;
-SIGNAL \key~combout\ : std_logic_vector(2 DOWNTO 2);
 SIGNAL \inst15|inst8|$00000|auto_generated|result_node\ : std_logic_vector(7 DOWNTO 0);
 SIGNAL \inst5|hex0\ : std_logic_vector(6 DOWNTO 0);
 SIGNAL \inst|etatCompteur\ : std_logic_vector(25 DOWNTO 0);
 SIGNAL \inst4|hex3\ : std_logic_vector(6 DOWNTO 0);
+SIGNAL \key~combout\ : std_logic_vector(2 DOWNTO 2);
 SIGNAL \ALT_INV_key~combout\ : std_logic_vector(2 DOWNTO 2);
 
 BEGIN
