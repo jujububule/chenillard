@@ -23,26 +23,20 @@ architecture chenille of bus_mux_8 is
 
 begin
 
+process (addr, in1, in2, in3, in4, in5, in6, in7, in8)
+begin
     case addr is
-        when "000" =>
-            sortie <= in1;
-        when "001" =>
-            sortie <= in2;
-        when "010" =>
-            sortie <= in3;
-        when "011" =>
-            sortie <= in4;
-        when "100" =>
-            sortie <= in5;
-        when "101" =>
-            sortie <= in6;
-        when "110" =>
-            sortie <= in7;
-        when "111" =>
-            sortie <= in8;
-        when others =>
-            sortie <= in1;
+        when "000" => sortie <= in1;
+        when "001" => sortie <= in2;
+        when "010" => sortie <= in3;
+        when "011" => sortie <= in4;
+        when "100" => sortie <= in5;
+        when "101" => sortie <= in6;
+        when "110" => sortie <= in7;
+        when "111" => sortie <= in8;
+        when others => sortie <= in1;
 
     end case;
+end process;
 
 end chenille;
