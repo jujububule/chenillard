@@ -17,8 +17,8 @@ begin
     process(clk_in, key2)
     begin
         if key2 = '0' then
-                ledr <= "00000000";
-            elsif rising_edge(clk_in)then
+            ledr <= "00000000";
+        elsif rising_edge(clk_in)then
             case ledr is --permet de décalé la led allumé
                 when "00000001" => ledr <= "00000010";
                 when "00000010" => ledr <= "00000100";
