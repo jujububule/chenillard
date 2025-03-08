@@ -27,9 +27,9 @@ begin
 			when others => vitesse <= 24999999; -- 1z
 		end case;
 	end process;
-	 
-	 
-	 
+
+
+
     process(clk_in)
     begin
         if rising_edge(clk_in) and onOff = '1' then

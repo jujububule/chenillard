@@ -27,47 +27,47 @@ begin
             etape <= 0;
 
         elsif rising_edge(clk_in)then
-				etape <= etape + 1;
-				
+            etape <= etape + 1;
+
             case etape is -- barre de gauche : 1001111 barre de droite : 1111001
                when 0 => -- hex3 gauche
                     hex0 <= "1111111";
                     hex1 <= "1111111";
                     hex2 <= "1111111";
                     hex3 <= "1111001";-- hex3 droite
-					when 1 => -- hex3 droite
+                when 1 => -- hex3 droite
                     hex0 <= "1111111";-- 
                     hex1 <= "1111111";-- 
                     hex2 <= "1001111";-- hex2 gauche
                     hex3 <= "1111111";
-					when 2 => -- hex2 gauche
+                when 2 => -- hex2 gauche
                     hex0 <= "1111111";-- 
                     hex1 <= "1111111";-- 
                     hex2 <= "1111001";-- hex2 droite
                     hex3 <= "1111111";-- 
-					when 3 => -- hex2 droite
+                when 3 => -- hex2 droite
                     hex0 <= "1111111";-- 
                     hex1 <= "1001111";--hex1 gauche
                     hex2 <= "1111111";-- 
                     hex3 <= "1111111";-- 
-					when 4 => -- hex1 gauche
+                when 4 => -- hex1 gauche
                     hex0 <= "1111111";-- 
                     hex1 <= "1111001";-- hex1 droite
                     hex2 <= "1111111";-- 
                     hex3 <= "1111111";-- 
-					when 5 => -- hex1 droite
+                when 5 => -- hex1 droite
                     hex0 <= "1001111";-- hex0 gauche
                     hex1 <= "1111111";-- 
                     hex2 <= "1111111";-- 
                     hex3 <= "1111111";-- 
-					when 6 => -- hex0 gauche
-						  hex0 <= "1111001";-- hex0 droite
+                when 6 => -- hex0 gauche
+                    hex0 <= "1111001";-- hex0 droite
                     hex1 <= "1111111";-- 
                     hex2 <= "1111111";-- 
                     hex3 <= "1111111";-- 
-					when others => -- hex0 droite
-						  etape <= 0;
-						  hex0 <= "1111111";-- 
+                when others => -- hex0 droite
+                    etape <= 0;
+                    hex0 <= "1111111";--
                     hex1 <= "1111111";-- 
                     hex2 <= "1111111";-- 
                     hex3 <= "1001111";-- hex3 gauche
