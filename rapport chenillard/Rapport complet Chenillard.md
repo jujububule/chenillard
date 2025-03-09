@@ -81,7 +81,7 @@ Cette fonction est directement intégré dans les programmes des différents mod
 ```VHDL
 if key2 = '0' then--réinitialisation
             ledv <= "00000000";
-
+			
         elsif rising_edge(clk_in)then
 ```
 # Process :
@@ -210,7 +210,7 @@ end chenilleDGDG;
 - Les LEDs vertes sont elles aussi des buffer.
 
 ### Problèmes :
-Aucun, car les problèmes rencontré au MODE 1.1 ont était éviter au MODE 1.3.
+Aucun, car les problèmes rencontré au MODE 1.1 ont été évité au MODE 1.3.
 
 ## Mode 1.7:
 > Les LEDs vertes s’allument successivement par 3 : 0, 1, 2 puis 1, 2, 3 puis 2, 3, 4… jusqu’à 5, 6, 7 puis recommence à 0, 1, 2… ;
