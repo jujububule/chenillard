@@ -21,7 +21,7 @@ end fonction_2_4;
 architecture chenille of fonction_2_4 is
 begin
 
-    process(clk_in, key2)
+    process(clk_in, key2)-- En cas de changement de l'une de ces entrées nous allons procédé a l'actualisation du code suivant
     begin
         if key2 = '0' then-- Remise a 0
             hex0 <= "0000000";
@@ -29,8 +29,8 @@ begin
             hex2 <= "0000000";
             hex3 <= "0000000";
 
-        elsif rising_edge(clk_in)then
-            case hex0 is
+        elsif rising_edge(clk_in)then-- On changera l'affichage uniquement si l'on est sur un front montant de l'horloge
+            case hex0 is-- On se base sur l'état de hex0
                 when "0010111" =>-- Etein les segments
                     hex0 <= "1111111";
                     hex1 <= "1111111";
