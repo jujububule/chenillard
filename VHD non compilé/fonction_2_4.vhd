@@ -29,6 +29,7 @@ begin
             hex2 <= "0000000";
             hex3 <= "0000000";
 
+        -- Gestion de l'affichage
         elsif rising_edge(clk_in)then-- On changera l'affichage uniquement si l'on est sur un front montant de l'horloge
             case hex0 is-- On se base sur l'état de hex0
                 when "0010111" =>-- Etein les segments
