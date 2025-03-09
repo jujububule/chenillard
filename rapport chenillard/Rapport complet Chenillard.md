@@ -259,6 +259,213 @@ Attention : On constate que l'on utilise plus ledg mais ledv, cela ne change rie
 Aucun, les erreurs faites précédemment nous on permis de ne plus les refaire.
 
 # Les modes afficheurs
+## Mode 2.1 :
+
+>Les segments d’un afficheur s’allument successivement, du segment a jusqu’au segment g… ;
+
+### Emplacement et fonctionnement
+
+#### Emplacement
+
+Il se situe après la gestion de l'horloge et avant les multiplexeurs.
+#### Fonctionnement
+
+Le mode reçoit le signal d'horloge et allume les segments de l'afficheur un par un, en partant du segment a jusqu'au segment g.
+
+### Le code
+
+```vhdl
+-- Importations des librairies
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
+
+-- Definition des entrées
+entity fonction_2_1 is
+port(
+    clk_in : in std_logic;
+    hex3 : buffer std_logic_vector(6 downto 0);
+    key2 : in std_logic
+);
+end fonction_2_1;
+
+-- Le programme
+architecture chenilleDGDG of fonction_2_1 is
+begin
+    process(clk_in, key2) -- En cas de changement de l'une de ces entrées nous allons procéder à l'actualisation du code suivant
+    begin
+        if key2 = '0' then -- Remise à 0
+            hex3 <= "0000000";
+        elsif rising_edge(clk_in) then -- On changera l'affichage uniquement si l'on est sur un front montant de l'horloge
+            case hex3 is -- Permet de décaler la LED allumée
+                when "1111110" => hex3 <= "1111101"; -- Segment a
+                when "1111101" => hex3 <= "1111011"; -- Segment b
+                when "1111011" => hex3 <= "1110111"; -- Segment c
+                when "1110111" => hex3 <= "1101111"; -- Segment d
+                when "1101111" => hex3 <= "1011111"; -- Segment e
+                when "1011111" => hex3 <= "0111111"; -- Segment f
+                when others => hex3 <= "1111110"; -- Segment g, permet l'initialisation
+            end case;
+        end if;
+    end process;
+end chenilleDGDG;
+```
+
+### Conclusion
+
+Le mode 2.1 allume successivement les segments de l'afficheur, en partant du segment a jusqu'au segment g, à la vitesse de l'horloge.
+## Mode 2.4
+>Les afficheurs clignotent en affichant 2025 ;
+### Emplacement et fonctionnement
+#### Emplacement 
+Il se situe après la gestion de l'horloge et avant les multiplexeurs.
+#### Fonctionnement 
+le mode reçoit le signal d'horloge et passe de l'affichage de rien à 2025.
+
+### Le code
+```vhdl
+-- Importations des librairies
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
+
+-- Definition des entrées
+entity fonction_2_4 is
+port(
+    clk_in : in std_logic;
+    hex0 : buffer std_logic_vector(6 downto 0);
+    hex1 : buffer std_logic_vector(6 downto 0);
+    hex2 : buffer std_logic_vector(6 downto 0);
+    hex3 : buffer std_logic_vector(6 downto 0);
+    key2 : in std_logic
+
+);
+end fonction_2_4;
+
+-- Le programme
+architecture Didier of fonction_2_4 is
+begin
+	
+    process(clk_in, key2)-- En cas de changement de l'une de ces entrées nous allons procédé a l'actualisation du code suivant
+    begin
+        if key2 = '0' then-- Remise a 0
+            hex0 <= "0000000";
+            hex1 <= "0000000";
+            hex2 <= "0000000";
+            hex3 <= "0000000";
+			
+	        -- Gestion de l'affichage
+        elsif rising_edge(clk_in)then-- On changera l'affichage uniquement si l'on est sur un front montant de l'horloge
+            case hex0 is-- On se base sur l'état de hex0
+                when "0010111" => -- Etein les segments
+                    hex0 <= "1111111";
+                    hex1 <= "1111111";
+                    hex2 <= "1111111";
+                    hex3 <= "1111111";
+                when others => -- Permet l'initialisation et l'affichage de 2025
+                    hex0 <= "0010111";
+                    hex1 <= "0100100";
+                    hex2 <= "1000000";
+                    hex3 <= "0100100";
+            end case;
+        end if;
+    end process;
+	
+end Didier;
+
+```
+
+### Conclusion 
+Le mode 2.4 affiche la date 2025 en clignotant à la vitesse de l'horloge.
+## Mode 2.7 :
+>Les segments e, f de HEX3 s’allume puis les segments b, c de HEX3 puis les segments e,f de HEX2… jusqu’à l’allumage des segments b, c de HEX0 puis en recommence à partir de HEX3 ; 
+### Code :
+```VHDL
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
+
+entity fonction_2_7 is
+port(
+    clk_in : in std_logic;
+    hex0 : buffer std_logic_vector(6 downto 0);
+    hex1 : buffer std_logic_vector(6 downto 0);
+    hex2 : buffer std_logic_vector(6 downto 0);
+    hex3 : buffer std_logic_vector(6 downto 0);
+    key2 : in std_logic
+
+);
+end fonction_2_7;
+
+architecture chenille of fonction_2_7 is
+
+begin
+
+
+
+    process(clk_in, key2)
+    begin
+        if key2 = '0' then
+            hex0 <= "0000000";
+            hex1 <= "0000000";
+            hex2 <= "0000000";
+            hex3 <= "0000000";
+
+        elsif rising_edge(clk_in)then
+            case hex3 is -- barre de gauche : 1001111 barre de droite : 1111001
+                when "1001111" => -- hex3 gauche
+                    hex0 <= "1111111";
+                    hex1 <= "1111111";
+                    hex2 <= "1111111";
+                    hex3 <= "1111001";-- hex3 droite
+                when "1111001" => -- hex3 droite
+                    hex0 <= "1111111";-- 
+                    hex1 <= "1111111";-- 
+                    hex2 <= "1001111";-- hex2 gauche
+                    hex3 <= "1111111";
+                when "1001111" => -- hex2 gauche
+                    hex0 <= "1111111";-- 
+                    hex1 <= "1111111";-- 
+                    hex2 <= "1111001";-- hex2 droite
+                    hex3 <= "1111111";-- 
+                when "1111001" => -- hex2 droite
+                    hex0 <= "1111111";-- 
+                    hex1 <= "1001111";--hex1 gauche
+                    hex2 <= "1111111";-- 
+                    hex3 <= "1111111";-- 
+                when "1001111" => -- hex1 gauche
+                    hex0 <= "1111111";-- 
+                    hex1 <= "1111001";-- hex1 droite
+                    hex2 <= "1111111";-- 
+                    hex3 <= "1111111";-- 
+                when "1111001" => -- hex1 droite
+                    hex0 <= "1001111";-- hex0 gauche
+                    hex1 <= "1111111";-- 
+                    hex2 <= "1111111";-- 
+                    hex3 <= "1111111";-- 
+                when "1001111" => -- hex0 gauche
+                    hex0 <= "1111001";-- hex0 droite
+                    hex1 <= "1111111";-- 
+                    hex2 <= "1111111";-- 
+                    hex3 <= "1111111";-- 
+                when others => -- hex0 droite
+                    hex0 <= "1111111";--
+                    hex1 <= "1111111";-- 
+                    hex2 <= "1111111";-- 
+                    hex3 <= "1111001";-- hex3 gauche
+
+            end case;
+        end if;
+    end process;
+
+end chenille;
+
+```
+Le principe est le même, on utilise un case car on as beaucoup
 # Mode combiné et mode défilement :
 ## Mode 3 :
 > Mode combiné. 1 mode LED au choix doit fonctionner avec un mode Afficheur au choix
