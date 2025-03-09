@@ -166,6 +166,7 @@ Ce code nous as posé problème car on voulait que au tout début le mot apparai
 | U   | B   |     |     |     |
 | B   |     |     |     |     |
 |     |     |     |     | G   |
+
 Mais lors du codage on avait :
 
 ```vhdl
@@ -198,6 +199,7 @@ Alors on as décider que lorsque le programme commence on allait afficher direct
 | I   | T   | H   | U   | B   |
 | T   | H   | U   | B   |     |
 | H   | U   | B   |     | G   |
+
 Cela nous as éviter d'avoir plusieurs fois `when "000000" =>`
 
 Cependant cela peut paraitre bizarre de commencer directement en voyant la fin du mot a gauche et la première lettre du mot a droite.
