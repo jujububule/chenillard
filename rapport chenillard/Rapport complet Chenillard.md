@@ -303,22 +303,22 @@ end bus_mux_7;
 -- Le programme
 architecture multiplexeur of bus_mux_7 is
 begin
-
-process (addr, in1, in2, in3, in4, in5, in6, in7, in8)-- En cas de changement de l'une de ces entrées nous allons procédé a l'actualisation du code suivant
-begin
-    case addr is-- On se base sur la valeur d'adresse
-        when "000" => sortie <= in1;-- Si la valeur d'adresse est 000 alors la sortie sera a l'état de in1
-        when "001" => sortie <= in2;
-        when "010" => sortie <= in3;
-        when "011" => sortie <= in4;
-        when "100" => sortie <= in5;
-        when "101" => sortie <= in6;
-        when "110" => sortie <= in7;
-        when "111" => sortie <= in8;
-        when others => sortie <= in1;
-    end case;
-    
-end process;
+	
+	process (addr, in1, in2, in3, in4, in5, in6, in7, in8)-- En cas de changement de l'une de ces entrées nous allons procédé a l'actualisation du code suivant
+	begin
+	    case addr is-- On se base sur la valeur d'adresse
+	        when "000" => sortie <= in1;-- Si la valeur d'adresse est 000 alors la sortie sera a l'état de in1
+	        when "001" => sortie <= in2;
+	        when "010" => sortie <= in3;
+	        when "011" => sortie <= in4;
+	        when "100" => sortie <= in5;
+	        when "101" => sortie <= in6;
+	        when "110" => sortie <= in7;
+	        when "111" => sortie <= in8;
+	        when others => sortie <= in1;
+	    end case;
+	    
+	end process;
 end multiplexeur;
 ```
 Dans le code on retrouve bien la même chose que dans l'exemple cité précédemment.
