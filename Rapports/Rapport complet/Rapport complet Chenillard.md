@@ -679,8 +679,8 @@ Mais c'était la manière la plus simple que nous avions trouvé.
 ![[Bus mux.png]]
 Ils se situe entre les modes et la sortie.
 ### Fonctionnement 
-En fonction de l'entré d'adresse ( addr ) une des entré sera affiché sur la sortie, comme dans cette exemple :
-Si dans l'entré addr on trouve 000 alors en sortie on trouveras la valeur de l'entré in1, si on met 001 ce sera la valeur de l'entré in2.
+En fonction de l'entré d'adresse `addr` une des entré sera affiché sur la sortie, comme dans cette exemple :
+Si dans l'entré `addr` on trouve `000` alors en sortie on trouveras la valeur de l'entré `in1`, si on met `001` ce sera la valeur de l'entré `in2`.
 
 ### Le code
 ```vhdl
