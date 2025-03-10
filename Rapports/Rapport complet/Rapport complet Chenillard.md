@@ -1,6 +1,7 @@
 TALENT Julien et RUIZ Evan Gr3
 
 # Cahier des charges :
+----
 L'objectif est de créer un chenillard qui permet d'allumer successivement des leds et/ou des afficheurs selon le modes sélectionné et la vitesse de défilement choisie.
 Il posséde : 
 - Différents modes de fonctionnement sélectionnable par des switchs de la carte ;
@@ -32,8 +33,9 @@ et 8 modes de fonctionnements doivent être exécutable :
 - RAZ : le bouton poussoir KEY(2) permet de réinitialiser le mode de défilement c'est-à-dire de reprendre le défilement à partir de sa position initiale;
 - PAUSE : le bouton poussoir KEY(0) permet de mettre en pause le système (l’allumage s’arrête sur la position actuelle) ;
 - M/A : le switch SW(9) permet de mettre en marche ou d’arrêter le système (à l’arrêt toutes les LEDs et les afficheurs sont éteints).
+- 
 # Vitesse :
-
+---
 Le module "vitesse" permet de générer une horloge avec une fréquence ajustable en fonction de la sélection de vitesse.
 
 ## Emplacement et fonctionnement
@@ -111,7 +113,9 @@ $$
 ## Conclusion
 
 Le module "vitesse" permet de générer une horloge à fréquence ajustable en fonction d'un signal de sélection, avec une plage de 1 Hz à 12 Hz. Cela permet d'adapter la vitesse d'affichage ou d'autres processus nécessitant une fréquence réduite. De plus, la présence du signal `onOff` permet de mettre en pause ces modes sur demande de l'utilisateur.
+
 # Marche / Arrêts
+---
 ## But
 La fonction ON/OFF a pour devoirs d'étreindre les Diodes Electroluminescentes ( LED ), des bandeaux et des afficheur 7 segments lorsque l'entré ON OFF est a 0.
 
@@ -153,6 +157,7 @@ La fonction ON/OFF permet d'éteindre toutes les LED.
 Suites aux dernier testes de la carte il n'y a pas eu d'autres problème de fonctionnement ou de bugs.
 
 # RAZ :
+---
 > RAZ : le bouton poussoir KEY(2) permet de réinitialiser le mode de défilement c'est-à-dire de reprendre le défilement à partir de sa position initiale
 
 Cette fonction est directement intégré dans les programmes des différents modes par un IF:
@@ -163,12 +168,15 @@ if key2 = '0' then--réinitialisation
         elsif rising_edge(clk_in)then
 ```
 # Process :
+---
 Dans chaque programmes on doit intégré un Process dans la partie architecture lorsque l'on utilise un case ou un if. 
 
 Le process permet de mettre à jour les variables contenue dans le multiplexeur.
 En quelque sorte cela rajoute une entrée spécifique utilisé comme horloge.
 # Les modes LEDs :
+---
 ## Mode 1.1 :
+---
 > Les LEDs rouges s’allument successivement de la 0 à la 7, puis cela recommence de 0 à 7… ;
 
 ### Code :
@@ -222,6 +230,7 @@ L'utilisation d'un case est beaucoup plus adapté car la sortie dépend d'un gra
 ### Problèmes :
 Au début nous n'avons pas pensez à intégrer la fonction ``RAZ`` au programme
 ## Mode 1.3
+---
 
 > Les LEDs rouges s’allument de la 0 à la 7 pendant que les leds vertes s’allument de la 7 à la 0 et le cycle recommence 
 
@@ -290,6 +299,7 @@ end chenilleDGDG;
 Aucun, car les problèmes rencontré au MODE 1.1 ont été évité au MODE 1.3.
 
 ## Mode 1.7:
+---
 > Les LEDs vertes s’allument successivement par 3 : 0, 1, 2 puis 1, 2, 3 puis 2, 3, 4… jusqu’à 5, 6, 7 puis recommence à 0, 1, 2… ;
 
 On repart encore une fois sur la base du MODE 1.1 sauf que cet fois si on utilise les LEDs
@@ -340,11 +350,15 @@ Attention : On constate que l'on utilise plus ledg mais ledv, cela ne change rie
 Aucun, les erreurs faites précédemment nous on permis de ne plus les refaire.
 
 # Les modes afficheurs
+---
 ## Particularité des 7 segments :
+---
 Les afficheurs 7 segments que l'on utilise ont la particularité d'être des 7 segment inversé c'est a dire que l'on met à `1` un segment pour qu'il s'éteigne et inversement on met à `0` un segment pour qu'il s'allume.
 
 Ce sont des afficheurs 7 segment à anodes communes.
+
 ## Mode 2.1 :
+---
 
 >Les segments d’un afficheur s’allument successivement, du segment a jusqu’au segment g… ;
 
@@ -401,6 +415,7 @@ end chenilleDGDG;
 
 Le mode 2.1 allume successivement les segments de l'afficheur, en partant du segment a jusqu'au segment g, à la vitesse de l'horloge.
 ## Mode 2.4
+---
 >Les afficheurs clignotent en affichant 2025 ;
 ### Emplacement et fonctionnement
 #### Emplacement 
@@ -464,7 +479,9 @@ end Didier;
 
 ### Conclusion 
 Le mode 2.4 affiche la date 2025 en clignotant à la vitesse de l'horloge.
+
 ## Mode 2.7 :
+---
 >Les segments e, f de HEX3 s’allume puis les segments b, c de HEX3 puis les segments e,f de HEX2… jusqu’à l’allumage des segments b, c de HEX0 puis en recommence à partir de HEX3.
 
 ### Emplacement et fonctionnement
@@ -560,7 +577,9 @@ Le principe est le même, on utilise un case car on as beaucoup de conditions.
 ### Conclusion 
 Le mode 2.7 affiche les segments e,f et b,c de l'HEX3 à l'HEX0 à la vitesse de l'horloge.
 # Mode combiné et mode défilement :
+---
 ## Mode 3 :
+---
 > Mode combiné. 1 mode LED au choix doit fonctionner avec un mode Afficheur au choix
 > On choisie d'afficher le mode 1.1 avec le mode 2.1
 > - Mode 1.1 : les LEDs rouges s’allument successivement de la 0 à la 7, puis cela recommence de 0 à 7… ;
@@ -631,6 +650,7 @@ afficheur HEX3.
 ### Problèmes :
 Aucun car ce code ressemble beaucoup au MODE 1.3 qui lui est ressemblant au MODE 1.1 donc toutes les erreurs faites précédemment nous ont permis de ne plus les faires.
 ## Mode 4 :
+---
 > Mode 4 : mode défilement. Faire défiler un mot de 6 lettres sur les 4 afficheurs .
 > - On décide de faire défiler le mot Github.
 
@@ -765,6 +785,7 @@ Cependant cela peut paraitre bizarre de commencer directement en voyant la fin d
 
 Mais c'était la manière la plus simple que nous avions trouvé.
 # Bus Multiplexeur :
+---
 > le but du multiplexeur est de pouvoir choisir le mode d'affichage en reliant la sortie d'un mode avec la sortie. 
 
 ## Emplacement et fonctionnement
