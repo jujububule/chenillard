@@ -32,7 +32,85 @@ et 8 modes de fonctionnements doivent être exécutable :
 - RAZ : le bouton poussoir KEY(2) permet de réinitialiser le mode de défilement c'est-à-dire de reprendre le défilement à partir de sa position initiale;
 - PAUSE : le bouton poussoir KEY(0) permet de mettre en pause le système (l’allumage s’arrête sur la position actuelle) ;
 - M/A : le switch SW(9) permet de mettre en marche ou d’arrêter le système (à l’arrêt toutes les LEDs et les afficheurs sont éteints).
+# Vitesse :
 
+Le module "vitesse" permet de générer une horloge avec une fréquence ajustable en fonction de la sélection de vitesse.
+
+## Emplacement et fonctionnement
+
+### Emplacement
+
+Ce module se situe au début, avant les modes, et permet de fournir une horloge à fréquence réduite en fonction d'un signal de sélection.
+
+### Fonctionnement
+
+Le module reçoit une horloge d'entrée de 50 MHz et divise cette fréquence en fonction de la valeur de `selecSpeed`.
+
+- "00" : 1 Hz
+- "01" : 3 Hz
+- "10" : 7 Hz
+- "11" : 12 Hz
+
+Le signal de sortie `clk_out` oscille en fonction de cette fréquence ajustée. Lorsque `onOff` est à '1', le signal est activé et fonctionne normalement. Le signal `onOff` permet également de mettre en pause l'horloge et donc de stopper temporairement l'exécution des modes, selon la demande de l'utilisateur.
+
+### Le code
+
+```vhdl
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.std_logic_arith.all;
+
+entity vitesse is
+port(
+	clk_in : in std_logic; -- l'horloge de 50MHz
+	clk_out : buffer std_logic; -- la sortie de la fréquence d'horloge abaissée
+	selecSpeed : in std_logic_vector(1 downto 0);
+	onOff : in std_logic
+);
+end vitesse;
+
+architecture compteur of vitesse is
+signal etatCompteur : std_logic_vector(25 downto 0); -- Utilisation de 26 bits pour compter jusqu'à 50 MHz, nécessaire pour diviser la fréquence d'horloge
+signal vitesse : integer; -- permet de mettre les valeurs en décimal sans définir le nombre de bits
+begin
+    	process(selecSpeed)
+    	begin
+    		case selecSpeed is -- Sélectionne la valeur de division pour obtenir la fréquence souhaitée
+    			when "00" => vitesse <= 24999999; -- 1 Hz
+    			when "01" => vitesse <= 8333332; -- 3 Hz
+    			when "10" => vitesse <= 3571428; -- 7 Hz
+    			when "11" => vitesse <= 2083332; -- 12 Hz
+    			when others => vitesse <= 24999999; -- 1 Hz
+    		end case;
+    	end process;
+
+    	process(clk_in)
+    	begin
+    		if rising_edge(clk_in) and onOff = '1' then -- Désactive l'horloge lorsque onOff est à '0'
+    			if etatCompteur = vitesse then
+    				etatCompteur <= conv_std_logic_vector(0,26); -- Réinitialisation du compteur
+    				clk_out <= not clk_out; -- Inversion du signal de sortie
+    			else
+    				etatCompteur <= etatCompteur + 1; -- Incrémentation normale
+    			end if;
+    		end if;
+    	end process;
+end compteur;
+```
+Pour trouvé le nombre de bit nécessaire pour la variable `etatCompteur` on fait le calcul suivant :
+$$
+\frac{\ln(50 \times 10^{6} )}{\ln(2)}=25.6
+$$
+On arrondis donc au supérieur ce qui donne $26$.
+
+Pour trouvé la valeur de `vitesse` on fait les calcules suivants :
+$$
+\frac{clk\_in}{2\times clk\_voulue}-1
+$$
+## Conclusion
+
+Le module "vitesse" permet de générer une horloge à fréquence ajustable en fonction d'un signal de sélection, avec une plage de 1 Hz à 12 Hz. Cela permet d'adapter la vitesse d'affichage ou d'autres processus nécessitant une fréquence réduite. De plus, la présence du signal `onOff` permet de mettre en pause ces modes sur demande de l'utilisateur.
 # Marche / Arrêts
 ## But
 La fonction ON/OFF a pour devoirs d'étreindre les Diodes Electroluminescentes ( LED ), des bandeaux et des afficheur 7 segments lorsque l'entré ON OFF est a 0.
@@ -86,6 +164,9 @@ if key2 = '0' then--réinitialisation
 ```
 # Process :
 Dans chaque programmes on doit intégré un Process dans la partie architecture lorsque l'on utilise un case ou un if. 
+
+Le process permet de mettre à jour les variables contenue dans le multiplexeur.
+En quelque sorte cela rajoute une entrée spécifique utilisé comme horloge.
 # Les modes LEDs :
 ## Mode 1.1 :
 > Les LEDs rouges s’allument successivement de la 0 à la 7, puis cela recommence de 0 à 7… ;
@@ -259,6 +340,10 @@ Attention : On constate que l'on utilise plus ledg mais ledv, cela ne change rie
 Aucun, les erreurs faites précédemment nous on permis de ne plus les refaire.
 
 # Les modes afficheurs
+## Particularité des 7 segments :
+Les afficheurs 7 segments que l'on utilise ont la particularité d'être des 7 segment inversé c'est a dire que l'on met à `1` un segment pour qu'il s'éteigne et inversement on met à `0` un segment pour qu'il s'allume.
+
+Ce sont des afficheurs 7 segment à anodes communes.
 ## Mode 2.1 :
 
 >Les segments d’un afficheur s’allument successivement, du segment a jusqu’au segment g… ;
@@ -380,8 +465,14 @@ end Didier;
 ### Conclusion 
 Le mode 2.4 affiche la date 2025 en clignotant à la vitesse de l'horloge.
 ## Mode 2.7 :
->Les segments e, f de HEX3 s’allume puis les segments b, c de HEX3 puis les segments e,f de HEX2… jusqu’à l’allumage des segments b, c de HEX0 puis en recommence à partir de HEX3 ; 
-### Code :
+>Les segments e, f de HEX3 s’allume puis les segments b, c de HEX3 puis les segments e,f de HEX2… jusqu’à l’allumage des segments b, c de HEX0 puis en recommence à partir de HEX3.
+
+### Emplacement et fonctionnement
+#### Emplacement 
+Il se situe après la gestion de l'horloge et avant les multiplexeurs.
+#### Fonctionnement 
+le mode reçoit le signal d'horloge et décale les segments allumé de l'HEX3 à l'HEX0 en boucle.
+
 ```VHDL
 
 library ieee;
@@ -465,7 +556,9 @@ begin
 end chenille;
 
 ```
-Le principe est le même, on utilise un case car on as beaucoup
+Le principe est le même, on utilise un case car on as beaucoup de conditions.
+### Conclusion 
+Le mode 2.7 affiche les segments e,f et b,c de l'HEX3 à l'HEX0 à la vitesse de l'horloge.
 # Mode combiné et mode défilement :
 ## Mode 3 :
 > Mode combiné. 1 mode LED au choix doit fonctionner avec un mode Afficheur au choix
